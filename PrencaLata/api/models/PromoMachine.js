@@ -8,14 +8,14 @@
 module.exports = {
 
   attributes: {
-    // machineId:{
-    //   model:'machine',
-    //   required:true
-    // },
-    // promoId:{
-    //   model:'promo',
-    //   required:true
-    // } 
+    machine:{
+      model:'machine',
+      required:true
+    },
+    promo:{
+      model:'promo',
+      required:true
+    } 
 
   },
 

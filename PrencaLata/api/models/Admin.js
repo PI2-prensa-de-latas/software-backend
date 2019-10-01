@@ -1,5 +1,5 @@
 /**
- * User.js
+ * Admin.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,19 +13,20 @@ module.exports = {
       type:'string',
       required:true
     },
-    email:{
+    password:{
       type:'string',
       required:true
     },
-    password:{
-      type:"string",
-      required:true
+    email:{
+      type:'string',
+      required:true,
     },
-    profile_pic_uri:{
-      type:"string",
+    redefinitionCode:{
+      type:'string',
     },
-    redefinitionsCode:{
-      type:"string",
+    promo:{
+      collection:'promo',
+      via:'admin'
     }
   },
   beforeCreate(values, cb) {
@@ -35,5 +36,6 @@ module.exports = {
       return cb();
     });
   },
+
 };
 

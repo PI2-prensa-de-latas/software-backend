@@ -8,14 +8,14 @@
 module.exports = {
 
   attributes: {
-    idPromo:{
+    Promo:{
       model:'promo',
       required:true
     },
-    // canCategoryId:{
-    //   model:'canCategory',
-    //   required:true
-    // }
+    canCategory:{
+      model:'canCategory',
+      required:true
+    }
   },
 
 };
