@@ -27,6 +27,10 @@ module.exports = {
     admin:{
       model:'admin',
       required:true
+    },
+    desccription:{
+      type:'string',
+      required:true
     }
   }
 };

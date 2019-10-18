@@ -10,6 +10,6 @@ WORKDIR /app
 
 RUN npm i
 
-EXPOSE 1337
+EXPOSE 8080
 
-CMD [ "node","app"]
+CMD [ "npm","start"]
