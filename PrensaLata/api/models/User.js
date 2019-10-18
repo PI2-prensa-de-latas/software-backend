@@ -26,6 +26,9 @@ module.exports = {
     },
     redefinitionsCode:{
       type:"string",
+    },
+    lastLocation:{
+      type:"string"
     }
   },
   beforeCreate(values, cb) {

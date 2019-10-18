@@ -1,0 +1,36 @@
+stages:
+  - publish
+  - deploy
+cache:
+  paths:
+  - node_modules/
+
+.publish_docker_hub:
+  image: docker
+  stage: publish
+  services:
+    - docker:dind
+  script:
+    - docker login -p $DOCKERPASSWORD -u $DOCKERLOGIN
+    - cd PrencaLata
+    - docker build . -t zero101010/prencaLata:latest
+    - docker push zero101010/prencaLata:latest
+  tags:
+    - docker
+
+publish_master:
+  extends: .publish_docker_hub
+  environment: master
+  only: 
+    - master
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update 
+    - apt-get -y install sshpass
+    - ls
+    - ./deploy.sh $PASSWORD $IP 
+    - apt-get -y update
+  only:
+    - master

@@ -141,7 +141,8 @@ module.exports = {
   * in the `config/security.js` file (not here), so that CSRF app can be     *
   * tested with CSRF protection turned on in development mode too.           *
   *                                                                          *
-  ***************************************************************************/
+  *************************************************
+**************************/
   security: {
 
     /***************************************************************************
