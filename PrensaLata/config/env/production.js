@@ -48,7 +48,7 @@ module.exports = {
     ***************************************************************************/
     default: {
       adapter: 'sails-mysql',
-      url: 'mysql://igordb@pi2-db:pi2-producao@pi2-db.mysql.database.azure.com:3306/prencalatas',
+      url: 'mysql://igor%40db-igor:projeto-integrador2@db-igor.mysql.database.azure.com:3306/prencalatas',
       //
       // host: "probonoproducao.mysql.database.azure.com",
       // user: "probonoadmin@probonoproducao",
@@ -141,8 +141,7 @@ module.exports = {
   * in the `config/security.js` file (not here), so that CSRF app can be     *
   * tested with CSRF protection turned on in development mode too.           *
   *                                                                          *
-  *************************************************
-**************************/
+  ***************************************************************************/
   security: {
 
     /***************************************************************************
