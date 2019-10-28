@@ -13,8 +13,8 @@ cache:
   script:
     - docker login -p $DOCKERPASSWORD -u $DOCKERLOGIN
     - cd PrencaLata
-    - docker build . -t zero101010/prencaLata:latest
-    - docker push zero101010/prencaLata:latest
+    - docker build . -t zero101010/prensaLata:latest
+    - docker push zero101010/prensaLata:latest
   tags:
     - docker
 
