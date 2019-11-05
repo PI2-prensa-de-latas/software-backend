@@ -19,6 +19,9 @@ module.exports = {
     location:{
       type:'string',
       // required:true
+    },
+    connectUser:{
+      type:"number",
     }
   },
 
