@@ -28,7 +28,7 @@ module.exports = {
       model:'admin',
       required:true
     },
-    desccription:{
+    description:{
       type:'string',
       required:true
     }
