@@ -20,7 +20,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
-  "POST /login":"LoginController.login"
+  "POST /login":"LoginController.login",
+  "GET /promoTime":"PromoController.promoTime",
+  "POST /sendDataByRasp":"SmashedCan.dataByRasp"
 
 
   /***************************************************************************
