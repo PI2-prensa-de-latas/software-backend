@@ -11,23 +11,23 @@ module.exports = {
 promoTime: async function (req, res) {
     let finalPromo =[]
     let finishTime = ""
-    var serverDate = momentTz.tz("america/Sao_Paulo");
-    sails.log(serverDate)
+    let nowTimeStamp = moment().unix() // dia de hoje
+    let nowFormated = moment.unix(nowTimeStamp).utc()
+    sails.log('now',nowFormated) 
     let promos = await Promo.find()
     promos.map(promo =>{
             let {createdAt,updatedAt,id,init_date,end_date,name,imageUri,description,admin} = promo
-            let formatTime = moment("20191110", "YYYYMMDD","pt").fromNow(serverDate)
-          //   if(formatTime === "um dia"){
-          //        finishTime = "Algumas horas"
-          //   }else{
-          //        finishTime = formatTime
-          //   }
-          //   let remamining_time =finishTime
-            let formatPromo = {createdAt,updatedAt,id,init_date,end_date,name,imageUri,description,admin,formatTime}
-            finalPromo.push(formatPromo)
-
+            // quando vai terminar a promoção
+            let end =moment.unix(end_date).utc();
+            sails.log('end',end)
+            let formatTime = end.diff(nowFormated,"days")
+            sails.log('duration',formatTime)
+            if (formatTime>=0){
+              formatTime = formatTime+1
+                let formatPromo = {createdAt,updatedAt,id,init_date,end_date,name,imageUri,description,admin,formatTime}
+                finalPromo.push(formatPromo)
+            }
     })
-    sails.log(serverDate)
     return res.json(finalPromo)
 }
 };
