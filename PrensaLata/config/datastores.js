@@ -35,7 +35,7 @@ module.exports.datastores = {
   default: {
 
     /***************************************************************************
-    *                                                                          *
+    *   0                                                                       *
     * Want to use a different database during development?                     *
     *                                                                          *
     * 1. Choose an adapter:                                                    *
@@ -51,6 +51,4 @@ module.exports.datastores = {
     adapter: 'sails-mysql',
     url: 'mysql://root:12345678@localhost:3306/prensaLatas',
   },
-
-
 };

@@ -24,7 +24,7 @@ module.exports = {
     profile_pic_uri:{
       type:"string",
     },
-    redefinitionsCode:{
+    redefinitionCode:{
       type:"string",
     },
     lastLocation:{
