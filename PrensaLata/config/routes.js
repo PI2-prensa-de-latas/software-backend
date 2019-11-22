@@ -24,7 +24,8 @@ module.exports.routes = {
   "GET /promoTime":"PromoController.promoTime",
   "POST /sendDataByRasp":"SmashedCan.dataByRasp",
   "POST /redefinitionCode":"UserController.redefinitionCode",
-  "POST /redefinitionPassword":"UserController.changePassword"
+  "POST /redefinitionPassword":"UserController.changePassword",
+  "POST /Score":"UserController.getScore"
 
   /***************************************************************************
   *                                                                          *

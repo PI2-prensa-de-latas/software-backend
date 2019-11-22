@@ -75,5 +75,16 @@ module.exports = {
       return res.status(400).json(e)
     }
   },
+
+  getScore: async function(req,res){
+    let userId = req.body.user
+    if(userId === undefined){
+      res.json({err:"User não está definido"})      
+    }
+    let user = await SmashedCan.find({user:userId})
+    let numberOfCan = user.length;
+    return res.json({Score:numberOfCan})
+
+  }
 };
 
