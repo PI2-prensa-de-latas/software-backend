@@ -1,5 +1,5 @@
 /**
- * PromoCategory.js
+ * Notification.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,12 +8,19 @@
 module.exports = {
 
   attributes: {
-    promo:{
-      model:'promo',
+    description:{
+      type:'string',
       required:true
     },
-    canCategory:{
-      model:'canCategory',
+    iconUri:{
+      type:'string',
+    },
+    user:{
+      model:'user',
+      required:true
+    },
+    promo:{
+      model:'promo',
       required:true
     }
   },

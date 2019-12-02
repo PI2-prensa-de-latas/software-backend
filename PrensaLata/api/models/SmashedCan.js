@@ -16,7 +16,7 @@ module.exports = {
       model:'machine',
       required:true
     },
-    category:{
+    canCategory:{
       model:"canCategory",
       required:true
     },

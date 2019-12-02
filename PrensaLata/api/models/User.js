@@ -29,6 +29,10 @@ module.exports = {
     },
     lastLocation:{
       type:"string"
+    },
+    notification:{
+      via:'user',
+      collection:'notification'
     }
   },
   beforeCreate(values, cb) {

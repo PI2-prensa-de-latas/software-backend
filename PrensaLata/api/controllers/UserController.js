@@ -84,7 +84,33 @@ module.exports = {
     let user = await SmashedCan.find({user:userId})
     let numberOfCan = user.length;
     return res.json({Score:numberOfCan})
+  },
+  getUserScore: async function (req, res) {
+    // req.body should contain .promo and .user
+    
+    // Get Promo requirements
+    let promo = await Promo.findOne({id: req.body.promo});
+    let categories = await PromoCategory.find({promo: req.body.promo});
+    let categoriesId = categories.map((value => value.id));
+    
+    let machines = await PromoMachine.find({promo: req.body.promo});
+    let machinesId = machines.map((value => value.id));
+    sails.log('mashinesId',machinesId)
 
+    // Get Cans that fit in promotion requirements
+    let cans = await SmashedCan.find({
+      user: req.body.user,
+      createdAt: {'>': parseInt(promo.init_date)},
+      createdAt: {'<': parseInt(promo.end_date)},
+      canCategory: {in: categoriesId},
+      machine: {in: machinesId},
+    })
+
+    return res.json({
+      score: cans.length,
+    })
   }
+
+
 };
 

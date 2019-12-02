@@ -21,11 +21,12 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   "POST /login":"LoginController.login",
-  "GET /promoTime":"PromoController.promoTime",
+  "POST /promoTime":"PromoController.promoTime",
   "POST /sendDataByRasp":"SmashedCan.dataByRasp",
   "POST /redefinitionCode":"UserController.redefinitionCode",
   "POST /redefinitionPassword":"UserController.changePassword",
-  "POST /Score":"UserController.getScore"
+  "POST /Score":"UserController.getScore",
+  "POST /getUserScore":"UserController.getUserScore"
 
   /***************************************************************************
   *                                                                          *
