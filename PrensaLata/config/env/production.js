@@ -48,7 +48,7 @@ module.exports = {
     ***************************************************************************/
     default: {
       adapter: 'sails-mysql',
-      url: 'mysql://igor%40db-igor:projeto-integrador2@db-igor.mysql.database.azure.com:3306/prencalatas',
+      url: 'mysql://igordb%40pi2-final:PI2-2019@pi2-final.mysql.database.azure.com:3306/prensaLatas',
       //
       // host: "probonoproducao.mysql.database.azure.com",
       // user: "probonoadmin@probonoproducao",
