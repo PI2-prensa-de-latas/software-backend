@@ -26,7 +26,8 @@ module.exports.routes = {
   "POST /redefinitionCode":"UserController.redefinitionCode",
   "POST /redefinitionPassword":"UserController.changePassword",
   "POST /Score":"UserController.getScore",
-  "POST /getUserScore":"UserController.getUserScore"
+  "POST /getUserScore":"UserController.getUserScore",
+  "POST /SmashedCan":"SmashedCanController.create",
 
   /***************************************************************************
   *                                                                          *

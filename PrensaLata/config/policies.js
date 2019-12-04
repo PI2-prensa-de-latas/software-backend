@@ -17,12 +17,12 @@ module.exports.policies = {
    *                                                                          *
    ***************************************************************************/
 
-  '*': ['isAuthorized'],
-  'LoginController': {
-    'login': true,
-  },
-  'UserController':{
-    'create':true,
+  // '*': ['isAuthorized'],
+  // 'LoginController': {
+  //   'login': true,
+  // },
+  // 'UserController':{
+  //   'create':true,
     
-  }
+  // }
 };
