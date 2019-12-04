@@ -158,9 +158,8 @@ module.exports = {
     cors: {
       allRoutes: true,
       allowOrigins: '*',
-      allowCredentials: false,
-      allowRequestHeaders: ['Authorization']
-    },
+      allowCredentials: false
+    }
 
   },
 
@@ -259,8 +258,7 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    onlyAllowOrigins: [
-    ],
+    onlyAllowOrigins: '*',
 
 
     /***************************************************************************
