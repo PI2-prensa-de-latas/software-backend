@@ -48,7 +48,7 @@ module.exports = {
     ***************************************************************************/
     default: {
       adapter: 'sails-mysql',
-      url: 'mysql://igordb%40pi2-final:PI2-2019@pi2-final.mysql.database.azure.com:3306/prensaLatas',
+       url: 'mysql://igordb%40pi2-final:PI2-2019@pi2-final.mysql.database.azure.com:3306/prensaLatas',
       //
       // host: "probonoproducao.mysql.database.azure.com",
       // user: "probonoadmin@probonoproducao",
@@ -155,7 +155,14 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-     },
+    cors: {
+      allRoutes: true,
+      allowOrigins: '*',
+      allowCredentials: false,
+      allowRequestHeaders: ['Authorization']
+    },
+
+  },
 
 
 
@@ -252,7 +259,8 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    onlyAllowOrigins: [],
+    onlyAllowOrigins: [
+    ],
 
 
     /***************************************************************************
