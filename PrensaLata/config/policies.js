@@ -22,6 +22,7 @@ module.exports.policies = {
     'login': true,
   },
   'UserController':{
-    'create':true
+    'create':true,
+    
   }
 };
