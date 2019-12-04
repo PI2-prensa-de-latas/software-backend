@@ -21,4 +21,7 @@ module.exports.policies = {
   'LoginController': {
     'login': true,
   },
+  'UserController':{
+    'create':true
+  }
 };
