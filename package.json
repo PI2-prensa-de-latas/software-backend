@@ -11,7 +11,7 @@
     "bcrypt": "^3.0.6",
     "date-fns": "^2.6.0",
     "date-fns-tz": "^1.0.8",
-    "grunt": "1.0.1",
+    "grunt": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
