@@ -16,6 +16,8 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+const promoServices = require('./../services/promoServices');
+
 module.exports = {
  redefinitionCode: async function (req, res) {
     try {
@@ -87,30 +89,18 @@ module.exports = {
   },
   getUserScore: async function (req, res) {
     // req.body should contain .promo and .user
-    
-    // Get Promo requirements
-    let promo = await Promo.findOne({id: req.body.promo});
-    let categories = await PromoCategory.find({promo: req.body.promo});
-    let categoriesId = categories.map((value => value.id));
-    
-    let machines = await PromoMachine.find({promo: req.body.promo});
-    let machinesId = machines.map((value => value.id));
-    sails.log('mashinesId',machinesId)
+    let score;
 
-    // Get Cans that fit in promotion requirements
-    let cans = await SmashedCan.find({
-      user: req.body.user,
-      createdAt: {'>': parseInt(promo.init_date)},
-      createdAt: {'<': parseInt(promo.end_date)},
-      canCategory: {in: categoriesId},
-      machine: {in: machinesId},
-    })
+    try {
+      score = promoServices.getUserScore(req.body.promo, req.body.user);
+    } catch (e) {
+      res.status(400).json(e);
+    }
 
-    return res.json({
-      score: cans.length,
+    return res.status(200).json({
+      score: score,
     })
   }
-
 
 };
 

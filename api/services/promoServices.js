@@ -16,7 +16,6 @@ module.exports = {
           canCategory: {in: categoriesId},
           machine: {in: machinesId},
         })
-        sails.log('final1',cans)
 
         return cans.length
       }
