@@ -20,6 +20,7 @@ module.exports = {
     email:{
       type:'string',
       required:true,
+      unique:true
     },
     redefinitionCode:{
       type:'string',
