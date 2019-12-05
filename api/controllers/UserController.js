@@ -111,6 +111,7 @@ module.exports = {
         img: promo.imageUri,
         name: promo.name,
         obtained_score: score,
+        remaining_time: promoServices.getRemaingTime(promo.end_date),
         description: promo.description,
       }
       return returnObj;
