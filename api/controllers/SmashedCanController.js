@@ -26,8 +26,12 @@ module.exports = {
       machine: req.body.machine,
       canCategory: req.body.canCategory
     }
-    SmashedCan.create(canBody)
-      .then(response => res.status(200).json(response))
+    SmashedCan.create(canBody).fetch()
+    // return res.status(200).json(result)
+      .then(response => {
+        console.log(response);
+        return res.status(200).json(response)
+      })
       .catch(error => res.status(400).json(error));
   }
 
