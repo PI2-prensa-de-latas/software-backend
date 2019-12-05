@@ -106,15 +106,18 @@ module.exports = {
   getAllScores: async function (req, res) {
     
     const fetchPromoWithScore = async (promo, userId) => {
-      let score = await promoServices.getUserScore(promo.id, userId);
-      let returnObj = {
-        img: promo.imageUri,
-        name: promo.name,
-        obtained_score: score,
-        remaining_time: promoServices.getRemaingTime(promo.end_date),
-        description: promo.description,
+      let remaining_time = promoServices.getRemaingTime(promo.end_date);
+      if (remaining_time.type !== 'over') {
+        let score = await promoServices.getUserScore(promo.id, userId);
+        let returnObj = {
+          img: promo.imageUri,
+          name: promo.name,
+          obtained_score: score,
+          remaining_time: remaining_time,
+          description: promo.description,
+        }
+        return returnObj;
       }
-      return returnObj;
     }
     
     const buildAllData = (promos, userId) => {
