@@ -87,19 +87,49 @@ module.exports = {
     let numberOfCan = user.length;
     return res.json({Score:numberOfCan})
   },
+
   getUserScore: async function (req, res) {
     // req.body should contain .promo and .user
     let score;
 
     try {
-      score = promoServices.getUserScore(req.body.promo, req.body.user);
+      score = await promoServices.getUserScore(req.body.promo, req.body.user);
+      console.log(score);
+      return res.status(200).json({
+        score: score,
+      })
     } catch (e) {
       res.status(400).json(e);
     }
+  },
 
-    return res.status(200).json({
-      score: score,
-    })
+  getAllScores: async function (req, res) {
+    
+    const fetchPromoWithScore = async (promo, userId) => {
+      let score = await promoServices.getUserScore(promo.id, userId);
+      let returnObj = {
+        img: promo.imageUri,
+        name: promo.name,
+        obtained_score: score,
+        description: promo.description,
+      }
+      return returnObj;
+    }
+    
+    const buildAllData = (promos, userId) => {
+      return Promise.all(promos.map(promo => fetchPromoWithScore(promo, userId)));
+    }
+
+    try {
+      let userId = req.body.user;
+      let promos = await Promo.find();
+      let promosWithScore = await buildAllData(promos, userId);
+      
+      res.status(200).json(promosWithScore);
+
+    } catch (e) {
+      res.status(400).json(e);
+    }
   }
 
 };

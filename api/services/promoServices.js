@@ -3,7 +3,7 @@ module.exports = {
         // req.body should contain .promo and .user
          // Get Promo requirements
         let promo = await Promo.findOne({id: promoId});
-        let categories = await PromoCategory.find({Promo: promoId});
+        let categories = await PromoCategory.find({promo: promoId});
         let categoriesId = categories.map((value => value.id));
         let machines = await PromoMachine.find({promo: promoId});
         let machinesId = machines.map((value => value.id));

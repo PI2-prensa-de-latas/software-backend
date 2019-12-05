@@ -27,6 +27,7 @@ module.exports.routes = {
   "POST /redefinitionPassword":"UserController.changePassword",
   "POST /Score":"UserController.getScore",
   "POST /getUserScore":"UserController.getUserScore",
+  "POST /getAllScores":"UserController.getAllScores",
   "POST /SmashedCan":"SmashedCanController.create",
 
   /***************************************************************************
