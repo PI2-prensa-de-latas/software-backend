@@ -35,6 +35,62 @@ promoTime: async function (req, res) {
             // }
     })
     // return res.json(finalPromo)
+},
+
+newPromo: async function (req, res) {
+  let promoBody = {
+    name: req.body.name,
+    description: req.body.description,
+    init_date: req.body.init_date,
+    end_date: req.body.end_date,
+    imageUri: req.body.imgLink,
+    admin: 1,
+  }
+  let response = await Promo.create(promoBody).fetch();
+
+  for (let i=0; i<req.body.canCategories; i++) {
+    await PromoCategory.create({
+      promo: response.id,
+      canCategory: req.body.canCategories[i],
+    })
+  }
+
+  for (let i=0; i<req.body.machines; i++) {
+    await PromoMachine.create({
+      promo: response.id,
+      machine: req.body.machines[i],
+    })
+  }
+
+  return res.status(200).json({
+    response
+  })
+},
+
+getWinner: async function (req, res) {
+  // req.body should contain .promo and .user
+  // Get Promo requirements
+  let promoId = req.body.promo;
+  let promo = await Promo.findOne({id: promoId});
+  let categories = await PromoCategory.find({promo: promoId});
+  let categoriesId = categories.map((value => value.id));
+  let machines = await PromoMachine.find({promo: promoId});
+  let machinesId = machines.map((value => value.id));
+
+  // Get Cans that fit in promotion requirements
+  let cans = await SmashedCan.find({
+    createdAt: {'>': parseInt(promo.init_date)},
+    createdAt: {'<': parseInt(promo.end_date)},
+    canCategory: {in: categoriesId},
+    machine: {in: machinesId},
+  })
+
+  let luckyNumber = Math.floor(Math.random() * cans.length);
+  let winnerId = cans[luckyNumber].user;
+  let winner = await User.findOne({id: winnerId});
+
+  return res.status(200).json({winner: winner});
 }
+
 };
 
