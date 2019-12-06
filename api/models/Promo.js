@@ -31,7 +31,20 @@ module.exports = {
     description:{
       type:'string',
       required:true
+    },
+    canCategory:{
+      collection:'canCategory',
+      via:'promo',
+      through:'promoCategory'
     }
-  }
+  },
+  // async afterCreate(valuesToSet,proceed) {
+  // let users = await User.find()
+  // users.map(async user=>{
+  //   let notification = await Notification.create({description:`Uma nova promoção foi criada`,iconUri:valuesToSet.imageUri,user:user.id,promo:valuesToSet.id}).fetch()
+  // })
+  // return proceed()
+}
 };
+
 
