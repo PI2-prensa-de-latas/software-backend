@@ -44,7 +44,7 @@ module.exports = {
   //   let notification = await Notification.create({description:`Uma nova promoção foi criada`,iconUri:valuesToSet.imageUri,user:user.id,promo:valuesToSet.id}).fetch()
   // })
   // return proceed()
-}
+// }
 };
 
 
