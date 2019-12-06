@@ -31,6 +31,11 @@ module.exports = {
     description:{
       type:'string',
       required:true
+    },
+    canCategory:{
+      collection:'canCategory',
+      via:'promo',
+      through:'promoCategory'
     }
   }
 };

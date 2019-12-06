@@ -15,6 +15,11 @@ module.exports = {
     size:{
       type:"string",
       required:true
+    },
+    promo:{
+      collection:'promo',
+      via:'canCategory',
+      through:'promoCategory'
     }
 
   },
