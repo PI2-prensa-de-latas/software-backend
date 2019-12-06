@@ -35,6 +35,37 @@ promoTime: async function (req, res) {
             // }
     })
     // return res.json(finalPromo)
+},
+
+newPromo: async function (req, res) {
+  let promoBody = {
+    name: req.body.name,
+    description: req.body.description,
+    init_date: req.body.init_date,
+    end_date: req.body.end_date,
+    imageUri: req.body.imgLink,
+    admin: 1,
+  }
+  let response = await Promo.create(promoBody).fetch();
+
+  for (let i=0; i<req.body.canCategories; i++) {
+    await PromoCategory.create({
+      promo: response.id,
+      canCategory: req.body.canCategories[i],
+    })
+  }
+
+  for (let i=0; i<req.body.machines; i++) {
+    await PromoMachine.create({
+      promo: response.id,
+      machine: req.body.machines[i],
+    })
+  }
+
+  return res.status(200).json({
+    response
+  })
 }
+
 };
 
