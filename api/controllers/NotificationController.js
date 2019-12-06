@@ -7,8 +7,7 @@
 
 module.exports = {
 registerSimpleCan:async function(req,res){
-    let {cansNumber} = req.body
-    let user = 1;
+    let {cansNumber,user} = req.body
     // sails.log(cansNumber)
     let indice=parseInt(cansNumber)-1;
     sails.log(indice)
