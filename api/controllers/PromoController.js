@@ -65,6 +65,31 @@ newPromo: async function (req, res) {
   return res.status(200).json({
     response
   })
+},
+
+getWinner: async function (req, res) {
+  // req.body should contain .promo and .user
+  // Get Promo requirements
+  let promoId = req.body.promo;
+  let promo = await Promo.findOne({id: promoId});
+  let categories = await PromoCategory.find({promo: promoId});
+  let categoriesId = categories.map((value => value.id));
+  let machines = await PromoMachine.find({promo: promoId});
+  let machinesId = machines.map((value => value.id));
+
+  // Get Cans that fit in promotion requirements
+  let cans = await SmashedCan.find({
+    createdAt: {'>': parseInt(promo.init_date)},
+    createdAt: {'<': parseInt(promo.end_date)},
+    canCategory: {in: categoriesId},
+    machine: {in: machinesId},
+  })
+
+  let luckyNumber = Math.floor(Math.random() * cans.length);
+  let winnerId = cans[luckyNumber].user;
+  let winner = await User.findOne({id: winnerId});
+
+  return res.status(200).json({winner: winner});
 }
 
 };
