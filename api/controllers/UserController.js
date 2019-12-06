@@ -128,6 +128,8 @@ module.exports = {
       let userId = req.body.user;
       let promos = await Promo.find();
       let promosWithScore = await buildAllData(promos, userId);
+
+      promosWithScore = promosWithScore.filter(value => value !== undefined);
       
       res.status(200).json(promosWithScore);
 

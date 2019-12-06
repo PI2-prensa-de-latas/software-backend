@@ -30,6 +30,8 @@ module.exports.routes = {
   "POST /getAllScores":"UserController.getAllScores",
   "POST /SmashedCan":"SmashedCanController.create",
   "POST /registerSimpleCan":"NotificationController.registerSimpleCan"
+  "POST /newPromo":"PromoController.newPromo",
+  "POST /getWinner":"PromoController.getWinner",
 
   /***************************************************************************
   *                                                                          *
