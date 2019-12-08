@@ -36,6 +36,11 @@ module.exports = {
       collection:'canCategory',
       via:'promo',
       through:'promoCategory'
+    },
+    machines:{
+      collection:'machine',
+      via:'promo',
+      through:'promoMachine'
     }
   },
   // async afterCreate(valuesToSet,proceed) {

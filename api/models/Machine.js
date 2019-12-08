@@ -22,6 +22,11 @@ module.exports = {
     },
     connectUser:{
       type:"number",
+    },
+    promo:{
+      collection:'promo',
+      via:'machine',
+      through:'promoMachine'
     }
   },
 
